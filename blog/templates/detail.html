@@ -1,0 +1,44 @@
+{% extends "home.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{% static 'detail.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class = 'postclass'>
+        <h2 class="title">{{ post.title }}</h2> 
+        {% comment %} 포스트의 북타이틀을 쓰겠다 {% endcomment %}
+        <h5 class="content">{{ post.content }}</h5>
+        <h5>{{ post.price }}원</h5>
+        <h5>{{ post.score }}점/5점</h5>
+        <h5>{{ post.created_date }}</h5>
+    </div>
+
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>{{ comment.content }}<a href="{% url 'comment_delete' post.pk comment.pk %}">삭제하기</a></li>
+        {% endfor %}
+    </ul>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+
+    <a href="{% url 'home' %}"><button type="button" class="btn btn-outline-success">홈으로</button></a>
+    {% comment %} home으로 돌아가는 url을 만들겠다 {% endcomment %}
+    <br>
+    <a href="{% url 'edit' post.pk %}"><button type="button" class="btn btn-outline-success">수정하기</button></a>
+    <br>
+    <a href="{% url 'delete' post.pk %}"><button type="button" class="btn btn-outline-warning">지워버린다</button></a>
+    {% endblock %}
+</body>
+</html>

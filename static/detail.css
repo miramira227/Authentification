@@ -1,0 +1,14 @@
+.postclass{
+    border: 1px solid;
+    width: 300px;
+    z-index: 100;
+}
+
+.title{
+    color: purple;
+}
+
+.content{
+    color: deeppink;
+}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "home.html" %}
+    {% block content %}
+    <h1> 자네 무슨 책을 읽었나 ! </h1>
+    <form method = "POST">{% csrf_token %}
+    {% comment %} post형식을 쓰려면 csrf_token이 반드시 필요 {% endcomment %}
+        {{ form.as_p }}
+        {% comment %} form 각각의 카테고리를 p태그 형식으로 달아주기 {% endcomment %}
+        <button type = 'submit'> 제출! </button>
+    </form>
+    {% endblock %}
+</body>
+</html>

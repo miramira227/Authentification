@@ -1,0 +1,13 @@
+.font-color{
+    color : salmon;
+}
+
+body {
+    background-image: url("PACA.jpg");
+    background-color: #cccc;
+    z-index: 0;
+}
+
+.font-color2{
+    color : sandybrown;
+}

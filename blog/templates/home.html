@@ -15,6 +15,7 @@
     <h2 class="font-color2"> 책 리뷰 목록 </h2>
         {% for post in posts %}
         <li><a href="{% url 'detail' post.pk %}">{{ post.title }}</a></li><br>
+        <img src="{{ post.img.jpg }}" style="height:200px; width:200px" />
         {% endfor %}
         {% comment %} for문에서 post의 번호를 붙여서 가고 포스트의 책이름이 링크로 연결됨 {% endcomment %}
     <a href="{% url 'new' %}"><button type="button" class="btn btn-outline-success">리뷰쓰기</button></a>

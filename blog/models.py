@@ -19,6 +19,7 @@ class Post(models.Model):
         default = 3,
     )
     created_date = models.DateTimeField(default = timezone.now)
+    image = models.FileField(null=True)
 
     def __str__(self):
         return self.book_title

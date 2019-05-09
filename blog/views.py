@@ -9,8 +9,8 @@ def home(request):
 
 def new(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
-        post = form.save(commit = False)
+        form = PostForm(request.POST, request.FILES)
+        post = form.save(commit=False)
         post.save()
         return redirect('detail', post.pk)
     else:

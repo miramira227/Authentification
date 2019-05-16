@@ -3,6 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Post(models.Model):
+    author = models.CharField(max_length=50, default="")
     title = models.CharField(max_length=50)
     content = models.TextField()
     price = models.CharField(max_length=30)

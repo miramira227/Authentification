@@ -1,16 +1,5 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css"
-    href="{% static 'detail.css' %}">
-</head>
-<body>
     {% block content %}
     <div class = 'postclass'>
         <h2 class="title">{{ post.title }}</h2> 
@@ -19,7 +8,7 @@
         <h5>{{ post.price }}원</h5>
         <h5>{{ post.score }}점/5점</h5>
         <h5>{{ post.created_date }}</h5>
-        <img src="{{ post.img.jpg }}" style="height:200px; width:200px" />
+        <img src="{{ post.image.url }}" style="height:200px; width:200px" />
     </div>
 
     <ul>
@@ -37,9 +26,11 @@
     <a href="{% url 'home' %}"><button type="button" class="btn btn-outline-success">홈으로</button></a>
     {% comment %} home으로 돌아가는 url을 만들겠다 {% endcomment %}
     <br>
+    {% if user.is_authenticated and post.author == user.username %}
     <a href="{% url 'edit' post.pk %}"><button type="button" class="btn btn-outline-success">수정하기</button></a>
     <br>
     <a href="{% url 'delete' post.pk %}"><button type="button" class="btn btn-outline-warning">지워버린다</button></a>
+    {% endif %}
     {% endblock %}
 </body>
 </html>
